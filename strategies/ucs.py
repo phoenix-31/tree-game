@@ -1,5 +1,5 @@
 import heapq
-from tree import Tree
+from tree.tree import Tree
 
 def ucs(root: Tree, target_value) -> tuple[Tree, int]:
     queue = [(0, root)]  # (cost, node)

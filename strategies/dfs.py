@@ -1,4 +1,4 @@
-from tree import Tree
+from tree.tree import Tree
 
 def dfs(root: Tree, target_value) -> tuple[Tree, int]:
     if root.value == target_value:

@@ -1,5 +1,5 @@
 import random
-from random_tree import random_tree
+from tree.random_tree import random_tree
 from strategies.bfs import bfs
 from strategies.ucs import ucs
 from strategies.dfs import dfs

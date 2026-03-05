@@ -1,4 +1,4 @@
-from tree import Tree
+from tree.tree import Tree
 
 def bfs(root: Tree, target_value) -> tuple[Tree, int]:
     cost = 0

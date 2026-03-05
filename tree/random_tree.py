@@ -1,5 +1,5 @@
 import random
-from tree import Tree
+from tree.tree import Tree
 
 def random_tree(max_depth, branching_factor, value_chooser, cost_chooser) -> Tree:
     if max_depth == 0:
