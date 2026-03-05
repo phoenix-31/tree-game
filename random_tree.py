@@ -1,16 +1,18 @@
 import random
 from tree import Tree
 
-def random_tree(max_value, max_children) -> Tree:
-    if max_value <= 0:
-        return None
+def random_tree(max_depth, branching_factor, value_chooser, cost_chooser) -> Tree:
+    if max_depth == 0:
+        return Tree(value_chooser())
 
-    value = random.randint(1, max_value)
-    cost = random.randint(1, 10)  # Random cost for the edge to this node
-    num_children = random.randint(0, max_children)
-    children = [random_tree(max_value, max_children - 1) for _ in range(num_children)]
-    tree = Tree(value)
-    for child in children:
-        if child is not None:
-            tree.add_child(cost, child)
-    return tree
+    root_value = value_chooser()
+    root = Tree(root_value)
+
+    if branching_factor > 0:
+        num_children = random.randint(0, branching_factor)
+        for _ in range(num_children):
+            child_tree = random_tree(max_depth - 1, branching_factor, value_chooser, cost_chooser)
+            cost = cost_chooser()
+            root.add_child(cost, child_tree)
+
+    return root

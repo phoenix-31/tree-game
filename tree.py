@@ -11,6 +11,11 @@ class Tree:
 
     def __lt__(self, other):
         return self.value < other.value
+    
+    def __iter__(self):
+        yield self
+        for _, child in self.children:
+            yield from child
 
     def __repr__(self):
         return f"Tree(value={self.value}, children={len(self.children)})"

@@ -1,13 +1,15 @@
 import random
 from random_tree import random_tree
-from bfs import bfs
-from ucs import ucs
-from dfs import dfs
+from strategies.bfs import bfs
+from strategies.ucs import ucs
+from strategies.dfs import dfs
 
 def main():
-    tree = random_tree(10, 5)  # max_value=10, max_children=5
+    value_chooser = lambda: random.randbytes(4).hex()  # Generate random hex string as value
+    cost_chooser = lambda: random.randint(1, 10)
+    tree = random_tree(8, 3, value_chooser, cost_chooser)
 
-    target_value = random.choice(range(1, 11))
+    target_value = random.choice([node.value for node in tree])
     print(f"Searching for value: {target_value}")
 
     bfs_result, bfs_cost = bfs(tree, target_value)
